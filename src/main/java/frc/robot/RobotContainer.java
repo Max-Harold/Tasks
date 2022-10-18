@@ -33,7 +33,6 @@ public class RobotContainer {
   public RobotContainer() {
     motor = new Motor();
     runMotor = new RunMotor(motor);
-    motor.setDefaultCommand(runMotor);
 
     controller = new XboxController(0);
     // Configure the button bindings
@@ -41,7 +40,7 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    new JoystickButton(controller, XboxController.Button.kA.value).whileHeld(runMotor);
+    new JoystickButton(controller, XboxController.Button.kA.value).whileHeld(new RunMotor(motor));
   }
 
 }

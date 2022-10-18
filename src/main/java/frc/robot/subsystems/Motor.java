@@ -11,7 +11,6 @@ import frc.robot.Constants;
 
 public class Motor extends SubsystemBase {
 
-    private DifferentialDrive differentialDrive;
     private WPI_TalonFX motor;
     /** Creates a new ExampleSubsystem. */
     public Motor() {
