@@ -6,14 +6,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.Chassis;
-import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import static frc.robot.RobotContainer.controller;
 /** An example command that uses an example subsystem. */
 public class ChassisRun extends CommandBase {
 
-    final double fwdScale = .2;
-    final double rotScale = .3;
+    final double fwdScale = .5;
+    final double rotScale = .5;
     @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
     private final Chassis m_chassis;
 
@@ -30,8 +29,9 @@ public class ChassisRun extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        double rot = rotScale * controller.getLeftX();
-        double fwd = fwdScale * controller.getRightY();
+        double rot = rotScale * controller.getRawAxis(XboxController.Axis.kRightX.value);
+        double fwd = -fwdScale * controller.getRawAxis(XboxController.Axis.kLeftY.value);
+
         m_chassis.runChassis(rot, fwd);
     }
 

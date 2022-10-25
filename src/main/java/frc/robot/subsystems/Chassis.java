@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -20,6 +21,7 @@ public class Chassis extends SubsystemBase {
         L_Motor = new WPI_TalonFX(Constants.L_ID);
         R_Motor = new WPI_TalonFX(Constants.R_ID);
         differentialDrive = new DifferentialDrive(L_Motor, R_Motor);
+        
     }
 
     @Override
@@ -28,8 +30,7 @@ public class Chassis extends SubsystemBase {
     }
 
     public void runChassis(double fwd, double rot) {
-        System.out.println(fwd+" "+rot);
-        //differentialDrive.arcadeDrive(fwd, rot);
+        differentialDrive.arcadeDrive(fwd, rot);
     }
     @Override
     public void simulationPeriodic() {
