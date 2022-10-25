@@ -10,8 +10,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.ChassisRun;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.RunMotor;
+import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Motor;
@@ -28,19 +30,25 @@ public class RobotContainer {
 
   private Motor motor;
   private RunMotor runMotor;
+  private Chassis chassis;
+  private ChassisRun chassisRun;
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     motor = new Motor();
     runMotor = new RunMotor(motor);
 
+
+    chassis = new Chassis();
+    chassisRun = new ChassisRun(chassis);
+    chassis.setDefaultCommand(chassisRun);
+
     controller = new XboxController(0);
     // Configure the button bindings
     configureButtonBindings();
   }
-
   private void configureButtonBindings() {
-    new JoystickButton(controller, XboxController.Button.kA.value).whileHeld(new RunMotor(motor));
   }
 
 }
