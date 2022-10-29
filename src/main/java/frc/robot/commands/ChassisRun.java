@@ -30,7 +30,7 @@ public class ChassisRun extends CommandBase {
     @Override
     public void execute() {
         double rot = rotScale * controller.getRawAxis(XboxController.Axis.kRightX.value);
-        double fwd = -fwdScale * controller.getRawAxis(XboxController.Axis.kLeftY.value);
+        double fwd = fwdScale * controller.getRawAxis(XboxController.Axis.kLeftY.value);
 
         m_chassis.runChassis(rot, fwd);
     }

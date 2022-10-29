@@ -19,7 +19,9 @@ public class Chassis extends SubsystemBase {
     public Chassis() {
         // initializes the motors and makes them follow the leader
         L_Motor = new WPI_TalonFX(Constants.L_ID);
+        L_Motor.setInverted(true);
         R_Motor = new WPI_TalonFX(Constants.R_ID);
+        R_Motor.setInverted(true);
         differentialDrive = new DifferentialDrive(L_Motor, R_Motor);
         
     }
