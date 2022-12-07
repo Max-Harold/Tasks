@@ -28,23 +28,9 @@ public class RobotContainer {
 
   public static XboxController controller;
 
-  private Motor motor;
-  private RunMotor runMotor;
-  private Chassis chassis;
-  private ChassisRun chassisRun;
-
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    motor = new Motor();
-    runMotor = new RunMotor(motor);
-
-
-    chassis = new Chassis();
-    chassisRun = new ChassisRun(chassis);
-    chassis.setDefaultCommand(chassisRun);
-
-    controller = new XboxController(0);
     // Configure the button bindings
     configureButtonBindings();
   }
